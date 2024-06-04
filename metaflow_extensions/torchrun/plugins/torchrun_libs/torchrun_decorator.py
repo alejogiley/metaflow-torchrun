@@ -32,8 +32,8 @@ class TorchrunDecoratorParallel(ParallelDecorator):
     }
     IS_PARALLEL = True
     
-    def __init__(self):
-        super(TorchrunDecoratorParallel, self).__init__()
+    def __init__(self, **kwargs):
+        super(TorchrunDecoratorParallel, self).__init__(**kwargs)
 
     def _setup_current(self, main_addr, main_port, ubf_context, num_nodes, node_index):
         current._update_env(
@@ -51,7 +51,7 @@ class TorchrunDecoratorParallel(ParallelDecorator):
         )
 
     def step_init(self, flow, graph, step, decos, environment, flow_datastore, logger):
-
+        self.environment = environment
         self.flow_datastore = flow_datastore
 
         for deco in decos: 

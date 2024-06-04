@@ -33,7 +33,7 @@ class TorchrunDecoratorParallel(ParallelDecorator):
     IS_PARALLEL = True
     
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(TorchrunDecoratorParallel, self).__init__(*args, **kwargs)
 
     def _setup_current(self, main_addr, main_port, ubf_context, num_nodes, node_index):
         current._update_env(
